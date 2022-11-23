@@ -36,10 +36,7 @@ pipeline {
 	stage('Create Instance') {
 	 steps {
     
-    sh 'gcloud compute instances create webhost4 --zone=europe-north1-b --tags=http-server --metadata=startup-script=apt update
-       apt -y install apache2
-       cat <<EOF > /var/www/html/index.html
-       <html><body><p>Welcome to MI Institute...!</p></body></html>'   
+    sh 'gcloud compute instances create webhost4 --zone=europe-north1-b --tags=http-server --metadata=startup-script=startup-script.sh'   
     }
     }
 }
